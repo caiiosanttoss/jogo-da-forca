@@ -11994,4 +11994,10 @@ main {
   border: 2px solid #000;
   padding: 2rem;
   display: flex;
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.4rem;
 }/*# sourceMappingURL=index.css.map */
