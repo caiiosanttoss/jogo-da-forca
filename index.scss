@@ -1,0 +1,21 @@
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  border: 2px solid #000;
+  padding: 2rem;
+  display: flex;
+}
