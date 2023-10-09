@@ -1,4 +1,4 @@
-const palavraAleatoria = "amor"
+const palavraAleatoria = "amor".toUpperCase()
 const palavraSplitted = palavraAleatoria.split("")
 console.log(palavraSplitted);
 
@@ -11,17 +11,8 @@ function disableButton(id) {
 }
 
 function encontrarLetra(letra) {
-  console.log(`Letra clicada: ${letra}`)
+  // console.log(`Letra clicada: ${letra}`)
   disableButton(letra);
-
-  if (numLetrasAcertadas === palavraSplitted.length) {
-    // console.log("Parabéns, você ganhou o jogo!")
-    return;
-  }
-  if (tentativas < 1) {
-    // console.log("Você perdeu o jogo!")
-    return;
-  }
 
   // console.log(`Letra pressionada: ${letra}`)
   let encontrada = false;
@@ -39,9 +30,18 @@ function encontrarLetra(letra) {
   if (encontrada === false) {
     tentativas--;
   }
+
+  if (numLetrasAcertadas === palavraSplitted.length) {
+    console.log("Parabéns, você ganhou o jogo!")
+    return;
+  }
+  if (tentativas < 1) {
+    console.log("Você perdeu o jogo!")
+    return;
+  }
   
-  // console.log(`Tentativas: ${tentativas}`)
-  // console.log(letrasReveladas);
+  console.log(`Tentativas: ${tentativas}`)
+  console.log(letrasReveladas);
 }
 
 /**
@@ -59,3 +59,20 @@ function generateKeyboard() {
 }
 
 generateKeyboard()
+
+document.addEventListener('keydown', function(event) {
+  const tecla = event.key.toUpperCase();
+  const buttonElement = document.getElementById(tecla);
+
+  if(buttonElement?.classList.contains("disabled")) {
+    return;
+  }
+
+  const alphabetRegex = /^[A-Z]$/;
+
+  if(alphabetRegex.test(tecla)) {
+    console.log(tecla);
+    encontrarLetra(tecla);
+    // document.getElementById(tecla).focus();
+  }
+});
