@@ -18,10 +18,27 @@ main {
   border: 2px solid #000;
   padding: 2rem;
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .keyboard {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 0.4rem;
+}
+
+.palavra-secreta-ul {
+  font-size: 2rem;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  justify-content: center;
+  gap: 0.4rem;
+
+  li {
+    border-bottom: 2px solid #000;
+    min-width: 30px;
+    text-align: center;
+  }
 }

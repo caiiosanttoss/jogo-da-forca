@@ -1,4 +1,4 @@
-const palavraAleatoria = "amor".toUpperCase()
+const palavraAleatoria = "banana".toUpperCase()
 const palavraSplitted = palavraAleatoria.split("")
 console.log(palavraSplitted);
 
@@ -22,6 +22,7 @@ function encontrarLetra(letra) {
     if (element === letra){
       letrasReveladas[index] = letra;
       numLetrasAcertadas++;
+      document.getElementById(`secret-word-${index}`).innerHTML = letra;
       
       encontrada = true;
     }
@@ -76,3 +77,22 @@ document.addEventListener('keydown', function(event) {
     // document.getElementById(tecla).focus();
   }
 });
+
+function MostrarLetrasCertas (){
+  // const container = document.querySelector(".palavra-secreta-container");
+  // container.innerHTML = "";
+  // palavraSplitted.split("").forEach((letra)) => {
+  //   if 
+  // }
+}
+
+function generateRandomWordHTML() {
+  const palavraSecretaHTMLElement = document.querySelector(".palavra-secreta-ul");
+  
+  for (const key in palavraSplitted) {
+    console.log(key);
+    palavraSecretaHTMLElement.innerHTML += `<li id='secret-word-${key}'>&#8203;</li>`;
+  }
+}
+
+generateRandomWordHTML()
