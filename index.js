@@ -1,53 +1,6 @@
-const words = [
-  {name: "abacaxi", tip: "Fruta tropical."},
-  {name: "banana", tip: "Fruta amarela."},
-  {name: "cachorro", tip: "Animal de estimação."},
-  {name: "elefante", tip: "Animal terrestre e grande."},
-  {name: "girafa", tip: "Animal de pescoço longo."},
-  {name: "janela", tip: "Parte da casa que permite ver o exterior."},
-  {name: "lapis", tip: "Instrumento para escrever ou desenhar."},
-  {name: "bicicleta", tip: "Veículo de duas rodas."},
-  {name: "computador", tip: "Máquina para processar informações."},
-  {name: "televisao", tip: "Aparelho para assistir programas."},
-  {name: "cadeira", tip: "Móvel para sentar."},
-  {name: "teclado", tip: "Conjunto de botões para digitar."},
-  {name: "sapato", tip: "Calçado para os pés."},
-  {name: "calendario", tip: "Mostra os dias, meses e anos."},
-  {name: "geladeira", tip: "Mantém alimentos frios."},
-  {name: "piano", tip: "Instrumento musical."},
-  {name: "bolacha", tip: "Alimento crocante."},
-  {name: "papel", tip: "Material para escrever."},
-  {name: "ventilador", tip: "Usado para refrescar o ambiente."},
-  {name: "relógio", tip: "Mostra a hora."},
-  {name: "paralelepipedo", tip: "Sólido geométrico."},
-  {name: "bicicleta", tip: "Veículo de duas rodas."},
-  {name: "escova", tip: "Usada para pentear os cabelos."},
-  {name: "espelho", tip: "Reflete a imagem."},
-  {name: "radio", tip: "Aparelho para ouvir música."},
-  {name: "futebol", tip: "Esporte com uma bola."},
-  {name: "palmeira", tip: "Tipo de árvore."},
-  {name: "maracuja", tip: "Fruta tropical."},
-  {name: "escola", tip: "Local de aprendizagem."},
-  {name: "pneu", tip: "Parte do carro."},
-  {name: "chave", tip: "Abre portas."},
-  {name: "cama", tip: "Móvel para dormir."},
-  {name: "garfo", tip: "Utensílio de cozinha."},
-  {name: "fogao", tip: "Utilizado para cozinhar."},
-  {name: "queijo", tip: "Produto derivado do leite."},
-  {name: "oculos", tip: "Usado para melhorar a visão."},
-  {name: "cachecol", tip: "Acessório para o pescoço."},
-  {name: "aviao", tip: "Meio de transporte aéreo."},
-  {name: "pombo", tip: "Ave comum nas cidades."},
-  {name: "amarelo", tip: "Cor."},
-  {name: "rosa", tip: "Flor."},
-  {name: "mochila", tip: "Saco para carregar objetos."},
-  {name: "lagarto", tip: "Réptil."},
-  {name: "lousa", tip: "Usada para escrever com giz."},
-  {name: "azul", tip: "Cor."},
-  {name: "piscina", tip: "Local de lazer com água."},
-  {name: "uva", tip: "Fruta pequena e arredondada."},
-  {name: "pente", tip: "Utensílio para arrumar o cabelo."}
-]
+import { words } from './secret-words.js'
+const myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {});
+let gameOver = false;
 
 function obterPalavraAleatoria(palavras) {
   const indiceAleatorio = Math.floor(Math.random() * palavras.length);
@@ -73,7 +26,9 @@ function disableButton(id) {
 }
 
 function encontrarLetra(letra) {
+  if (gameOver) return;
   // console.log(`Letra clicada: ${letra}`)
+  const bodyModalHTMLElement = document.querySelector('.modal-body')
   disableButton(letra);
 
   // console.log(`Letra pressionada: ${letra}`)
@@ -100,11 +55,17 @@ function encontrarLetra(letra) {
   }
 
   if (numLetrasAcertadas === palavraSplitted.length) {
+    gameOver = true;
     console.log("Parabéns, você ganhou o jogo!")
+    bodyModalHTMLElement.innerHTML = "Parabéns, você ganhou o jogo!"
+    myModal.show();
     return;
   }
   if (tentativas > 5) {
+    gameOver = true;
     console.log("Você perdeu o jogo!")
+    bodyModalHTMLElement.innerHTML = "Você perdeu o jogo!"
+    myModal.show();
     return;
   }
   
@@ -139,19 +100,10 @@ document.addEventListener('keydown', function(event) {
   const alphabetRegex = /^[A-Z]$/;
 
   if(alphabetRegex.test(tecla)) {
-    console.log(tecla);
     encontrarLetra(tecla);
     // document.getElementById(tecla).focus();
   }
 });
-
-function MostrarLetrasCertas (){
-  // const container = document.querySelector(".palavra-secreta-container");
-  // container.innerHTML = "";
-  // palavraSplitted.split("").forEach((letra)) => {
-  //   if 
-  // }
-}
 
 function generateRandomWordHTML() {
   const palavraSecretaHTMLElement = document.querySelector(".palavra-secreta-ul");
@@ -163,3 +115,5 @@ function generateRandomWordHTML() {
 
 generateRandomWordHTML()
 setTipHTML()
+
+
