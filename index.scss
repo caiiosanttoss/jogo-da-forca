@@ -18,8 +18,17 @@ main {
   border: 2px solid #000;
   padding: 2rem;
   display: flex;
+  gap: 2rem;
+}
+
+aside {
+  display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.hangman-section {
+  width: 180px;
 }
 
 .keyboard {

@@ -2,7 +2,7 @@ const palavraAleatoria = "banana".toUpperCase()
 const palavraSplitted = palavraAleatoria.split("")
 console.log(palavraSplitted);
 
-let tentativas = 6
+let tentativas = 0
 let numLetrasAcertadas = 0;
 const letrasReveladas = Array(palavraSplitted.length).fill("")
 
@@ -29,14 +29,16 @@ function encontrarLetra(letra) {
   }
   
   if (encontrada === false) {
-    tentativas--;
+    tentativas++;
+    const hangmanImgHTMLElement = document.getElementById("hangman-img");
+    hangmanImgHTMLElement.src = `./images/hangman-${tentativas}.svg`
   }
 
   if (numLetrasAcertadas === palavraSplitted.length) {
     console.log("Parabéns, você ganhou o jogo!")
     return;
   }
-  if (tentativas < 1) {
+  if (tentativas > 5) {
     console.log("Você perdeu o jogo!")
     return;
   }
@@ -90,7 +92,6 @@ function generateRandomWordHTML() {
   const palavraSecretaHTMLElement = document.querySelector(".palavra-secreta-ul");
   
   for (const key in palavraSplitted) {
-    console.log(key);
     palavraSecretaHTMLElement.innerHTML += `<li id='secret-word-${key}'>&#8203;</li>`;
   }
 }
