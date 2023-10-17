@@ -4,25 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./styles/index.css">
   <title>Jogo da forca</title>
 </head>
 
-<body>
-  <main id="main">
+<body class="bg-secondary">
+  <main id="main" class="bg-light">
     <section class="hangman-section">
       <img id="hangman-img" src="./images/hangman-0.svg" width="100%">
     </section>
 
     <aside>
-      <ul class="palavra-secreta-ul"></ul>
+      <ul class="secret-word-ul"></ul>
 
-      <div class="tip-container">
-        <p>Dica: <strong id="tip-text">uma dica qualquer</strong></p>
-        <p>Tentativas incorrentas: <span id="guesses-text">0/6</span></p>
+      <div class="hint-container">
+        <p>Dica: <strong id="hint-text"></strong></p>
+        <p>Tentativas incorrentas: <strong><span id="guesses-text" class="text-danger">0/6</span></strong></p>
       </div>
 
-      <div class="keyboard"></div>
+      <div class="keyboard-container"></div>
     </aside>
 
     <!-- Modal -->
