@@ -12,21 +12,20 @@ function getRandomWord(words) {
   return words[randomIndex];
 }
 
-// Get a random word from the mock data
-const randomWord = getRandomWord(secretWordsMock);
-// Convert the random word to uppercase and split it into an array of characters
-const wordSplitted = randomWord.name.toUpperCase().split("");
-// Initialize an array to store revealed letters, initially filled with empty strings
-const revealedLetters = Array(wordSplitted.length).fill("");
-
+// Initialize an array to store the character array of the random word
+let wordSplitted = [];
+// Initialize an array to store revealed letters
+let revealedLetters = [];
+// Other game variables
 let gameOver = false;
 let attempts = 0;
 let numCorrectLetters = 0;
 
 /**
  * Set random word hint in HTML text element.
+ * @param {any} randomWord 
  */
-function setHintText() {
+function setHintText(randomWord) {
   // Get the hint element by its ID
   const hintElement = document.getElementById("hint-text");
   // Set the inner HTML of the hint element with the hint from the random word
@@ -50,8 +49,8 @@ function findLetter(letter) {
   // Check if the game is over before proceeding
   if (gameOver) return;
 
-  // Get the modal body element
-  const modalBodyElement = document.querySelector('.modal-body');
+  // Get the modal title element
+  const modalTitleElement = document.getElementById("staticBackdropLabel");
 
   // Disable the button corresponding to the clicked letter
   disableButton(letter);
@@ -84,8 +83,8 @@ function findLetter(letter) {
   // Check if all letters have been guessed
   if (numCorrectLetters === wordSplitted.length) {
     gameOver = true;
-    // console.log("Congratulations, you won the game!");
-    modalBodyElement.innerHTML = "Congratulations, you won the game!";
+    // console.log("Parabéns, você ganhou o jogo! 🎉👏🏼");
+    modalTitleElement.innerHTML = "Parabéns, você ganhou o jogo! 🎉👏🏼";
     myModal.show();
     return;
   }
@@ -93,8 +92,8 @@ function findLetter(letter) {
   // Check if the number of attempts has exceeded the limit
   if (attempts > 5) {
     gameOver = true;
-    // console.log("You lost the game!");
-    modalBodyElement.innerHTML = "You lost the game!";
+    // console.log("Você perdeu o jogo! 😭😢");
+    modalTitleElement.innerHTML = "Você perdeu o jogo! 😭😢";
     myModal.show();
     return;
   }
@@ -148,8 +147,15 @@ function setSecretWordBlankLetters() {
 }
 
 function startGame(){
+  // Get a random word from the mock data
+  const randomWord = getRandomWord(secretWordsMock);
+  // Convert the random word to uppercase and split it into an array of characters
+  wordSplitted = randomWord.name.toUpperCase().split("");
+  // Initialize an array to store revealed letters, initially filled with empty strings
+  revealedLetters = Array(wordSplitted.length).fill("");
+
   generateKeyboard();
-  setHintText();
+  setHintText(randomWord);
   setSecretWordBlankLetters();
 }
 
