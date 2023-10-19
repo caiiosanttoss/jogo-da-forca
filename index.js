@@ -1,11 +1,14 @@
-import { secretWordsMock } from './mocks/secret-words-mock.js';
+import { secretWordsMock } from "./mocks/secret-words-mock.js";
 
 // Initialize modal using Bootstrap
-const myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {});
+const myModal = new bootstrap.Modal(
+  document.getElementById("staticBackdrop"),
+  {}
+);
 
 /**
  * Function to get a random word from the provided word list.
- * @param {Array} words 
+ * @param {Array} words
  */
 function getRandomWord(words) {
   const randomIndex = Math.floor(Math.random() * words.length);
@@ -23,7 +26,7 @@ let numCorrectLetters = 0;
 
 /**
  * Set random word hint in HTML text element.
- * @param {any} randomWord 
+ * @param {any} randomWord
  */
 function setHintText(randomWord) {
   // Get the hint element by its ID
@@ -34,7 +37,7 @@ function setHintText(randomWord) {
 
 /**
  * Disable a virtual keyboard button by id.
- * @param {string} buttonId 
+ * @param {string} buttonId
  */
 function disableButton(buttonId) {
   // Get the button element by its ID and add the "disabled" class
@@ -43,9 +46,9 @@ function disableButton(buttonId) {
 
 /**
  * Find a letter in the character array of random word.
- * @param {string} letter 
+ * @param {string} letter
  */
-function findLetter(letter) {
+window.findLetter = function (letter) {
   // Check if the game is over before proceeding
   if (gameOver) return;
 
@@ -100,7 +103,7 @@ function findLetter(letter) {
 
   // console.log(`Attempts: ${attempts}`);
   // console.log(revealedLetters);
-}
+};
 
 /**
  * Generates a virtual keyboard with buttons for letters A-Z in HTML.
@@ -116,7 +119,7 @@ function generateKeyboard() {
   }
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener("keydown", function (event) {
   const pressedKey = event.key.toUpperCase();
   const buttonElement = document.getElementById(pressedKey);
 
@@ -146,7 +149,7 @@ function setSecretWordBlankLetters() {
   }
 }
 
-function startGame(){
+function startGame() {
   // Get a random word from the mock data
   const randomWord = getRandomWord(secretWordsMock);
   // Convert the random word to uppercase and split it into an array of characters
@@ -160,8 +163,3 @@ function startGame(){
 }
 
 startGame();
-
-
-
-
-
