@@ -1,6 +1,6 @@
 # Jogo da forca web
 
-Este projeto consiste numa versão online do clássico jogo da forca. Utiliza HTML DOM e JavaScript para possibilitar a interação do usuário com a interface. O projeto também incluiu eventos de teclado via função `addEventListener("keydown")` para melhorar a usabilidade. Outros conceitos envolvidos neste projeto foram: a) Tags semânticas HTML; b) CSS Grid; c) CSS Flexbox; d) Media Queries para garantir responsividade.
+Este projeto consiste numa versão online do clássico <strong>jogo da forca</strong>. JavaScript e HTML DOM foram utilizados para possibilitar a interação do usuário com a interface. O projeto também incluiu eventos de teclado via função `addEventListener("keydown")` para melhorar a usabilidade. Outros conceitos envolvidos neste projeto foram: a) Tags semânticas HTML; b) CSS Grid; c) CSS Flexbox; d) Media Queries para garantir responsividade.
 
 ## 👀 Demo
 
