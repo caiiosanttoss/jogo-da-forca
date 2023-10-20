@@ -6,9 +6,18 @@
 
   main {
     flex-direction: column;
+    padding: 1rem;
+    margin: 1rem;
+    gap: 1rem;
   }
 
-  .keyboard-container {
-    grid-template-columns: repeat(6, 1fr);
+  .hangman-section {
+    width: 250px;
+  }
+
+  .secret-word-ul {
+    li {
+      min-width: 30px;
+    }
   }
 }
